@@ -55,4 +55,13 @@ public class TaskController {
         return new Question ("The Java Logo", "What is depicted on the Java logo?", new String[]{"Robot", "Tea leaf", "Cup of coffee", "Bug"}, 2);
     }
 
+    @GetMapping(value = "/api/quizzes")
+    public Question get(@RequestBody int id) {
+        //String serialized;
+        ObjectMapper objectMapper = new ObjectMapper();
+        Question question = QuestionStore.getQuestion(id);
+        //objectMapper.writeValue(request, Question.class);
+        return question;
+    }
+
 }
